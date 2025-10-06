@@ -17,15 +17,11 @@ class KepzesController extends Controller
     public function create(Request $request)
     {
         Kepzes::create(ValidationHelper::validateKepzes($request));
-        return redirect('/');
+        return redirect('/kepzesek');
     }
 
     public function update(Request $request, Kepzes $kepzes)
     {
-        if ($redirect = AuthCheckService::requireAuth()) {
-            return $redirect;
-        }
-
         if (!AuthCheckService::requireAdmin()) {
             abort(403, 'Unauthorized action.');
         }
@@ -36,10 +32,6 @@ class KepzesController extends Controller
 
     public function delete(Kepzes $kepzes)
     {
-        if ($redirect = AuthCheckService::requireAuth()) {
-            return $redirect;
-        }
-
         if (!AuthCheckService::requireAdmin()) {
             abort(403, 'Unauthorized action.');
         }
@@ -50,10 +42,6 @@ class KepzesController extends Controller
 
     public function showEditScreen(Kepzes $kepzes)
     {
-        if ($redirect = AuthCheckService::requireAuth()) {
-            return $redirect;
-        }
-
         if (!AuthCheckService::requireAdmin()) {
             abort(403, 'Unauthorized action.');
         }
