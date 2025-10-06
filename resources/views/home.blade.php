@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<x-header/>
 <body>
 <div class="container">
+    <x-navbar/>
     @auth
-        <p>Congrats you are logged in.</p>
-        <form action="/logout" method="POST">
+        <p>Welcome {{$user->name}}!</p>
+        <form action="/createKepzes" method="POST">
             @csrf
-            <button>Log out</button>
+            <input type="text" placeholder="nev" class="form-control" name="nev">
+            <input type="number" placeholder="felveheto" class="form-control" name="felveheto">
+            <input type="number" placeholder="minimum" class="form-control" name="minimum">
+            <button class="btn btn-primary">create kepzes</button>
         </form>
     @else
         <h2>Register</h2>
