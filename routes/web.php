@@ -24,5 +24,5 @@ Route::put('/edit-kepzes/{kepzes}', [KepzesController::class, 'update']);
 Route::delete('/delete-kepzes/{kepzes}', [KepzesController::class, 'delete']);
 
 Route::get('/kepzesek', function () {
-    return view('kepzes', ['kepzesek' => Kepzes::all()]);
+    return view('kepzes', ['kepzesek' => Kepzes::all(), 'user' => Auth::user()]);
 });

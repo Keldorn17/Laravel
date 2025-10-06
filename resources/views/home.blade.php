@@ -6,13 +6,7 @@
     <x-navbar/>
     @auth
         <p>Welcome {{$user->name}}!</p>
-        <form action="/createKepzes" method="POST">
-            @csrf
-            <input type="text" placeholder="nev" class="form-control" name="nev">
-            <input type="number" placeholder="felveheto" class="form-control" name="felveheto">
-            <input type="number" placeholder="minimum" class="form-control" name="minimum">
-            <button class="btn btn-primary">create kepzes</button>
-        </form>
+
     @else
         <h2>Register</h2>
         <form action="/register" method="POST">
