@@ -14,6 +14,9 @@ Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+Route::get('/contact-list', [ContactController::class, 'list'])
+    ->middleware(['auth', 'verified', 'admin'])->name('contact.list');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
