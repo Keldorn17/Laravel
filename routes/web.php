@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\KepzesController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Kepzes;
@@ -8,6 +9,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contact', [ContactController::class, 'create'])->name('contact');
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
