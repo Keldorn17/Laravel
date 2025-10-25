@@ -19,6 +19,16 @@ class ContactController extends Controller
     }
 
     /**
+     * Display a listing of the contact messages.
+     * This is our new admin page method.
+     */
+    public function list(): Factory|View
+    {
+        $messages = ContactMessage::latest()->get();
+        return view('contact-list', ['messages' => $messages]);
+    }
+
+    /**
      * Store a new contact message.
      */
     public function store(Request $request): RedirectResponse
@@ -32,6 +42,6 @@ class ContactController extends Controller
         ContactMessage::create($validated);
 
         return redirect()->route('contact')
-        ->with('success', 'Köszönjük! Az üzenetét megkaptuk.');
+            ->with('success', 'Köszönjük! Az üzenetét megkaptuk.');
     }
 }
