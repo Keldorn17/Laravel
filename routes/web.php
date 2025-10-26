@@ -14,23 +14,25 @@ Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-Route::get('/contact-list', [ContactController::class, 'list'])
+Route::get('/dashboard/contact-list', [ContactController::class, 'list'])
     ->middleware(['auth', 'verified', 'admin'])->name('contact.list');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/kepzesek-charts', [KepzesController::class, 'showCharts'])
+    ->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::post('/createKepzes', [KepzesController::class, 'create']);
+    Route::get('/dashboard/edit-kepzes/{kepzes}', [KepzesController::class, 'showEditScreen']);
+    Route::put('/edit-kepzes/{kepzes}', [KepzesController::class, 'update']);
+    Route::delete('/delete-kepzes/{kepzes}', [KepzesController::class, 'delete']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::post('/createKepzes', [KepzesController::class, 'create']);
-    Route::get('/edit-kepzes/{kepzes}', [KepzesController::class, 'showEditScreen']);
-    Route::put('/edit-kepzes/{kepzes}', [KepzesController::class, 'update']);
-    Route::delete('/delete-kepzes/{kepzes}', [KepzesController::class, 'delete']);
-    Route::get('/kepzesek', function () {
+    Route::get('/dashboard/kepzesek', function () {
         return view('kepzes', ['kepzesek' => Kepzes::all(), 'user' => Auth::user()]);
     })->name('kepzesek');
 });

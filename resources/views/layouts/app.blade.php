@@ -32,5 +32,6 @@
                 {{ $slot }}
             </main>
         </div>
+        @vite(['resources/js/kepzesek-charts.js'])
     </body>
 </html>

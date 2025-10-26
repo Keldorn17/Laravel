@@ -28,7 +28,7 @@
                             <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">{{ $kepzes['minimum'] }}</td>
                             @if ($user->isAdmin())
                                 <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">
-                                    <a href="/edit-kepzes/{{ $kepzes->id }}" class="text-blue-500">Edit</a>
+                                    <a href="/dashboard/edit-kepzes/{{ $kepzes->id }}" class="text-blue-500">Edit</a>
                                 </td>
                                 <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">
                                     <form action="/delete-kepzes/{{ $kepzes->id }}" method="POST">
@@ -60,14 +60,14 @@
                                 <label for="felveheto" class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Felvehető</label>
                                 <input type="number" id="felveheto" name="felveheto"
                                        placeholder="Max létszám"
-                                       class="w-full rounded-md bg-white dark:bg-gray-700  border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition" />
+                                       class="w-full rounded-md bg-white dark:bg-gray-700  border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition [color-scheme:light] dark:[color-scheme:dark]" />
                             </div>
 
                             <div>
                                 <label for="minimum" class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Minimum</label>
                                 <input type="number" id="minimum" name="minimum"
                                        placeholder="Minimum létszám"
-                                       class="w-full rounded-md bg-white dark:bg-gray-700  border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition" />
+                                       class="w-full rounded-md bg-white dark:bg-gray-700  border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition [color-scheme:light] dark:[color-scheme:dark]" />
                             </div>
                         </div>
 

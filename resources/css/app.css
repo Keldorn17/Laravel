@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --chart-text-light: theme(colors.gray.100);
+    --chart-text-dark: theme(colors.gray.800);
+    --chart-grid: rgba(0,0,0,0.1);
+    --chart-bg: theme(colors.white);
+
+    --blue: theme(colors.blue.500);
+    --red: theme(colors.red.500);
+    --green: theme(colors.emerald.500);
+    --yellow: theme(colors.amber.500);
+    --purple: theme(colors.violet.500);
+    --pink: theme(colors.fuchsia.500);
+}
+
