@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Jelentkezes extends Model
 {
@@ -20,13 +21,14 @@ class Jelentkezes extends Model
 
     public $timestamps = false;
 
-    public function jelentkezo()
+    public function jelentkezo(): BelongsTo
     {
         return $this->belongsTo(Jelentkezo::class, 'jelentkezoid');
     }
 
-    public function kepzes()
+    public function kepzes(): BelongsTo
     {
         return $this->belongsTo(Kepzes::class, 'kepzesid');
     }
+
 }

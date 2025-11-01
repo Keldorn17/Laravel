@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\KepzesController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Kepzes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +21,9 @@ Route::get('/dashboard/contact-list', [ContactController::class, 'list'])
 
 Route::get('/dashboard/kepzesek-charts', [KepzesController::class, 'showCharts'])
     ->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard/jelentkezesek', [JelentkezesController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('jelentkezesek');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/createKepzes', [KepzesController::class, 'create']);
