@@ -5,6 +5,7 @@ use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\KepzesController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Kepzes;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,10 @@ Route::get('/dashboard/kepzesek-charts', [KepzesController::class, 'showCharts']
 
 Route::get('/dashboard/jelentkezesek', [JelentkezesController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('jelentkezesek');
+
+Route::get('/run-migrations', function () {
+    return Artisan::call('migrate:fresh', ["--seed" => true, "--force" => true]);
+});
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/createKepzes', [KepzesController::class, 'create']);
