@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(DefaultAdminSeeder::class);
+        Schema::disableForeignKeyConstraints();
+        DB::table('jelentkezes')->truncate();
+        DB::table('jelentkezo')->truncate();
+        DB::table('kepzes')->truncate(); // Assuming you have a KepzesSeeder
+        $this->call([
+            DefaultAdminSeeder::class,
+            KepzesSeeder::class,
+            JelentkezoSeeder::class,
+            JelentkezesSeeder::class
+        ]);
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -18,6 +18,11 @@
                         {{ __('Képzések') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('jelentkezesek')" :active="request()->routeIs('jelentkezesek')">
+                        {{ __('Jelentkezések') }}
+                    </x-nav-link>
+                </div>
                 @if(Auth::user()->isAdmin())
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('contact.list')" :active="request()->routeIs('contact.list')">
@@ -81,6 +86,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('kepzesek')" :active="request()->routeIs('kepzesek')">
                 {{ __('Képzések') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('jelentkezesek')" :active="request()->routeIs('jelentkezesek')">
+                {{ __('Jelentkezések') }}
             </x-responsive-nav-link>
             @if(Auth::user()->isAdmin())
             <x-responsive-nav-link :href="route('contact.list')" :active="request()->routeIs('contact.list')">

@@ -40,7 +40,7 @@
                                     <td class="px-6 py-4 text-sm max-w-md truncate">
                                         {{ $message->message }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
                                         {{-- Shows a "human-readable" time, e.g., "2 hours ago" --}}
                                         {{ $message->created_at->diffForHumans() }}
                                     </td>
